@@ -69,14 +69,15 @@ Operating System: Mac or Linux (See Vagrant above if you're on Windows)
 3. Install Git.
 4. Install ImageMagick.
 5. Install Node.js.
-6. `git clone git://github.com/churchio/onebody.git && cd onebody`
-7. `mysql -uroot -e "grant all on onebody_dev.* to onebody@localhost identified by 'onebody';"`
-8. `mysql -uroot -e "grant all on onebody_test.* to onebody@localhost identified by 'onebody';"`
-9. `cp config/database.yml{.mysql-example,}`
-10. `bundle install`
-11. `cp config/secrets.yml{.example,} && vim config/secrets.yml` and add a random secret token to both the "development" and "test" sections (you can use `rake secret` to generate a new random secret).
-12. `rake db:create db:schema:load db:seed`
-13. `rails server`
+6. Clone OneBody project `git clone git://github.com/churchio/onebody.git && cd onebody`
+7. Choose which database will be use and copy the configuration `cp config/database.yml{.mysql-example, .postgresql-example} config/database.yml`
+8. Install the dependencies `bundle install`
+9. `cp config/secrets.yml{.example,} && vim config/secrets.yml` and add a random secret token to both the "development" and "test" sections (you can use `rake secret` to generate a new random secret).
+10. Created the databases `rake db:create`
+11. Run migrations `rake db:migrate`
+12. Load the schema `rake db:schema:load`
+13. Populate the database `rake db:seed`
+14. Run the project `rails s`
 
 Now visit the site running in development mode at http://localhost:3000.
 
